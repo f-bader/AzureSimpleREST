@@ -4,7 +4,6 @@
     RootModule        = 'AzureSimpleREST.psm1'
 
     # Version number of this module.
-    # This value is managed through the CI/CD Pipeline
     ModuleVersion     = '0.0.0'
 
     # Supported PSEditions
@@ -63,31 +62,31 @@
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @(
+        'Get-AzSRBackupInstancePrice',
         'Get-AzSRFreeIpAddress',
-        'Get-AzSRBackupInstancePrice', 
-        'Get-AzSRLogAnalyticsLinkedAutomationAccount', 
-        'Get-AzSRLogAnalyticsSavedSearch', 
-        'Get-AzSRLogAnalyticsSavedSearchList', 
-        'Get-AzSRLogAnalyticsSavedSearchSchedule', 
-        'Get-AzSRLogAnalyticsSavedSearchScheduleAlert', 
+        'Get-AzSRLogAnalyticsLinkedAutomationAccount',
+        'Get-AzSRLogAnalyticsSavedSearch',
+        'Get-AzSRLogAnalyticsSavedSearchList',
+        'Get-AzSRLogAnalyticsSavedSearchSchedule',
+        'Get-AzSRLogAnalyticsSavedSearchScheduleAlert',
         'Get-AzSRLogAnalyticsUpdateableVMs',
-        'Get-AzSRAzureOMSWorkspaceList', 
-        'Get-AzSRRecoveryServiceBackupJobs', 
-        'Get-AzSRRecoveryServiceBackupJobDetails', 
-        'Get-AzSRRecoveryServiceVault', 
-        'Get-AzSRRecoveryServiceVaultProtectedItemExtendedInformation', 
-        'Get-AzSRRecoveryServiceVaultProtectedItemRecoveryPoint', 
-        'Get-AzSRRecoveryServiceVaultProtectedItems', 
-        'Get-AzSRRecoveryServiceVaultUsage', 
-        'Get-AzSRSubscription', 
-        'Get-AzSRTotalDiskSizePerVM', 
-        'Get-AzSRUpdateSchedule', 
-        'Get-AzSRVM', 
-        'Get-AzSRVMByName', 
+        'Get-AzSRLogAnalyticsWorkspace',
+        'Get-AzSRRecoveryServiceBackupJobDetails',
+        'Get-AzSRRecoveryServiceBackupJobs',
+        'Get-AzSRRecoveryServiceVault',
+        'Get-AzSRRecoveryServiceVaultProtectedItemExtendedInformation',
+        'Get-AzSRRecoveryServiceVaultProtectedItemRecoveryPoint',
+        'Get-AzSRRecoveryServiceVaultProtectedItems',
+        'Get-AzSRRecoveryServiceVaultUsage',
+        'Get-AzSRSubscription',
+        'Get-AzSRTotalDiskSizePerVM',
+        'Get-AzSRUpdateDeployment',
+        'Get-AzSRVM',
+        'Get-AzSRVMByName',
         'Get-AzSRVMBySubscription',
         'Get-AzSRVMProtectionStatus',
         'Remove-AzSRRecoveryServiceVaultProtectedItem',
-        'Set-AzSRUpdateSchedule'
+        'Set-AzSRUpdateDeployment'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -129,7 +128,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = ''
+            ReleaseNotes = 'Corrected the function list'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''
@@ -145,4 +144,3 @@
     # DefaultCommandPrefix = ''
 
 }
-
