@@ -49,6 +49,7 @@ function Get-AzSRFreeIpAddress {
     )
 
     Process {
+        $FoundIPAddress = 0
         if ($SubnetName) {
             $SubnetConfiguration = Get-AzureRmVirtualNetwork -ExpandResource "subnets/ipConfigurations" -Name $NetworkName -ResourceGroupName $ResourceGroupName | Select-Object -ExpandProperty Subnets | Where-Object { $_.Name -eq $SubnetName}
         } else {
@@ -56,7 +57,7 @@ function Get-AzSRFreeIpAddress {
         }
         foreach ($Subnet in $SubnetConfiguration) {
             Write-Verbose "Check for free IP address in subnet:`t$($Subnet.Name)"
-            if ( ( Test-Path variable:First) -and ($FoundIPAddress -ge $First)) {
+            if ( ( $PSBoundParameters.ContainsKey('First') ) -and ($FoundIPAddress -ge $First)) {
                 # We have enough IP addresses
                 break
             }
@@ -82,7 +83,7 @@ function Get-AzSRFreeIpAddress {
                         "ResourceGroupName"  = $ResourceGroupName
                     }
                     $FoundIPAddress++
-                    if ( ( Test-Path variable:First) -and ($FoundIPAddress -ge $First)) {
+                    if ( ( $PSBoundParameters.ContainsKey('First') ) -and ($FoundIPAddress -ge $First)) {
                         # We have enough IP addresses
                         break
                     }
