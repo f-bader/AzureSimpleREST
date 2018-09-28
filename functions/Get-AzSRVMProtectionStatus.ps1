@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Checks if a given VM is protected by Azure Backup
 
@@ -50,7 +50,7 @@ function Get-AzSRVMProtectionStatus {
         }
         $SubscriptionId = $VMInformation.ResourceId -replace '\/subscriptions\/(.*)/resourceGroups\/.*', '$1'
         $uri = "https://management.azure.com/subscriptions/$SubscriptionId/providers/Microsoft.RecoveryServices/locations/$($VMInformation.location)/backupStatus?api-version=2016-06-01"
-        
+
         Write-Verbose $uri
 
         $requestBody = @{
@@ -79,12 +79,12 @@ function Get-AzSRVMProtectionStatus {
                     'policyName'        = $Response.policyName
                 }
             }
-        } catch { 
+        } catch {
             if ($_.ErrorDetails) {
                 Write-Warning "$(($_.ErrorDetails.Message | ConvertFrom-Json).error.message)"
             } else {
                 Write-Warning "$($_.Exception.Message)"
- 
+
             }
         }
     }

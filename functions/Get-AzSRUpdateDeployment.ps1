@@ -1,10 +1,10 @@
-<#
+﻿<#
 .SYNOPSIS
     Get one or all Azure Automation Update Deployment Configurations
 
 .DESCRIPTION
     Get one or all Azure Automation Update Deployment Configurations
-    
+
     https://docs.microsoft.com/en-us/azure/templates/microsoft.automation/automationaccounts/softwareupdateconfigurations
 
 .PARAMETER AutomationAccountResourceId
@@ -120,12 +120,12 @@ function Get-AzSRUpdateDeployment {
                 $lastModifiedTime = $null
             }
             if ($_.properties.error) {
-                $error = @{
+                $DeyplomentError = @{
                     code    = $_.properties.error.code
                     message = $_.properties.error.message
                 }
             } else {
-                $error = $null
+                $DeyplomentError = $null
             }
             if ($_.properties.updateConfiguration.operatingSystem -eq "Windows") {
                 $windowsUpdateConfiguration = @{
@@ -179,7 +179,7 @@ function Get-AzSRUpdateDeployment {
                 }
                 provisioningState   = $_.properties.provisioningState
                 createdBy           = $_.properties.createdBy
-                error               = $error
+                error               = $DeyplomentError
                 tasks               = $_.properties.tasks
                 creationTime        = $creationTime
                 lastModifiedBy      = $_.properties.lastModifiedBy

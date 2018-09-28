@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Create a Azure Automation Update Deployment
 
@@ -37,7 +37,7 @@
     Copyright: (c) 2018 Fabian Bader
     License: MIT https://opensource.org/licenses/MIT
 #>
-function Set-AzSRUpdateSchedule {
+function Set-AzSRUpdateDeployment {
     [CmdletBinding(SupportsShouldProcess = $True)]
     param (
         [Parameter(Mandatory = $true)]
@@ -117,7 +117,7 @@ function Set-AzSRUpdateSchedule {
                             "timeZone"  = $TimeZone
                         }
                     }
-                } 
+                }
             }
             "Linux" {
                 $requestBody = @{
@@ -148,7 +148,7 @@ function Set-AzSRUpdateSchedule {
                 }
             }
         }
-        
+
         $params = @{
             ContentType = 'application/json'
             Headers     = $LoginHeader
@@ -161,7 +161,7 @@ function Set-AzSRUpdateSchedule {
         If ($PSCmdlet.ShouldProcess("Create update scheduler `"$UpdateScheduleName`"")) {
             Invoke-RestMethod @params | Out-Null
             Get-AzSRUpdateDeployment -AutomationAccountResourceId $AutomationAccountResourceId -UpdateScheduleName $UpdateScheduleName
-        }    
+        }
     }
 }
 New-Alias -Name Set-AzSRUpdateSchedule -Value Set-AzSRUpdateDeployment

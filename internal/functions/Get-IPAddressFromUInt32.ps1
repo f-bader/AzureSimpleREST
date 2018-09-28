@@ -1,15 +1,13 @@
-<#
+﻿<#
 .SYNOPSIS
-Short description
+    Converts UInt32 object to ipaddress object
 
 .DESCRIPTION
-Long description
+    Converts UInt32 object to ipaddress object
+    Helper function for Get-SubnetAddress
 
 .PARAMETER UInt32
-Parameter description
-
-.EXAMPLE
-An example
+    UInt32 object
 
 .NOTES
     Website: https://powershell.org/forums/topic/ip-address-math/
@@ -26,7 +24,7 @@ function Get-IPAddressFromUInt32 {
     )
 
     $bytes = [BitConverter]::GetBytes($UInt32)
-            
+
     if ([BitConverter]::IsLittleEndian) {
         [Array]::Reverse($bytes)
     }
