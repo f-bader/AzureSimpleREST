@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Get all protected items from a Recovery Service Vault
 
@@ -16,7 +16,7 @@
     License: MIT https://opensource.org/licenses/MIT
 #>
 function Get-AzSRRecoveryServiceVaultProtectedItems {
-    [CmdletBinding()]   
+    [CmdletBinding()]
     param (
         [Alias('Id')]
         [Parameter(Mandatory = $true,

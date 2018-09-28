@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Return a list of VMs from the specified subscription that match a name
 
@@ -24,7 +24,7 @@ function Get-AzSRVMByName {
     param (
         [Parameter(Mandatory = $true,
             ValueFromPipelineByPropertyName = $true)]
-        [ValidateScript( 
+        [ValidateScript(
             {
                 try {
                     [System.Guid]::Parse($_) | Out-Null
@@ -53,7 +53,7 @@ function Get-AzSRVMByName {
         }
         #endregion
     }
-    
+
     Process {
         $uri = "https://management.azure.com/subscriptions/$SubscriptionId/resources?api-version=2018-02-01&`$filter=resourceType eq 'Microsoft.Compute/virtualMachines' and name eq '$VMName'"
 

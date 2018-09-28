@@ -1,4 +1,4 @@
-@{
+﻿@{
 
     # Script module or binary module file associated with this manifest.
     RootModule        = 'AzureSimpleREST.psm1'
@@ -134,7 +134,7 @@
             # ExternalModuleDependencies = ''
 
         } # End of PSData hashtable
-    
+
     } # End of PrivateData hashtable
 
     # HelpInfo URI of this module

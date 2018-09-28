@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Retreive the detailed information about a backup job
 
@@ -55,7 +55,7 @@ function Get-AzSRRecoveryServiceBackupJobDetails {
         $BackupJobsList.value  | ForEach-Object {
             #region Get detailed result
             # https://docs.microsoft.com/en-us/rest/api/backup/jobdetails/get
-            
+
             $params = @{
                 ContentType = 'application/x-www-form-urlencoded'
                 Headers     = $LoginHeader

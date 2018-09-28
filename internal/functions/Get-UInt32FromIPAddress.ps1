@@ -1,15 +1,13 @@
 <#
 .SYNOPSIS
-Short description
+    Converts ipaddress object to UInt32
 
 .DESCRIPTION
-Long description
+    Converts ipaddress object to UInt32
+    Helper function for Get-SubnetAddress
 
 .PARAMETER IPAddress
-Parameter description
-
-.EXAMPLE
-An example
+    IP address object
 
 .NOTES
     Website: https://powershell.org/forums/topic/ip-address-math/
@@ -18,6 +16,7 @@ An example
     Used with permission: https://twitter.com/msh_dave/status/1037475306381094913
 #>
 function Get-UInt32FromIPAddress {
+    [OutputType('System.UInt32')]
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]

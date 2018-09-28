@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Get all Azure Recovery Service Vaults
 
@@ -21,7 +21,7 @@ function Get-AzSRRecoveryServiceVault {
         [Parameter(Mandatory = $true,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true)]
-        [ValidateScript( 
+        [ValidateScript(
             {
                 try {
                     [System.Guid]::Parse($_) | Out-Null

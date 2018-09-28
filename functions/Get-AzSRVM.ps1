@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Return basic information about a virtual machine
 
@@ -64,23 +64,22 @@ function Get-AzSRVM {
             $Response = Invoke-RestMethod @params
             $Response | ForEach-Object {
                 New-Object psobject -Property @{
-                    'vmName'          = $_.name
-                    'resourceGroup'   = $ResourceId -replace '^.*resourceGroups.(.*).providers.*$', '$1'
-                    'vmId'            = $_.properties.vmId
-                    'vmSize'          = $_.properties.hardwareProfile.vmSize
-                    'computerName'    = $_.properties.osProfile.computerName
-                    'location'        = $_.location
-                    'businessService' = $_.tags.BusinessService
-                    'costCenter'      = $_.tags.CostCenter
-                    'ResourceId'      = $ResourceId
+                    'vmName'        = $_.name
+                    'resourceGroup' = $ResourceId -replace '^.*resourceGroups.(.*).providers.*$', '$1'
+                    'vmId'          = $_.properties.vmId
+                    'vmSize'        = $_.properties.hardwareProfile.vmSize
+                    'computerName'  = $_.properties.osProfile.computerName
+                    'location'      = $_.location
+                    'tags'          = $_.tags
+                    'ResourceId'    = $ResourceId
                 }
             }
-        } catch { 
+        } catch {
             if ($_.ErrorDetails) {
                 Write-Warning "$(($_.ErrorDetails.Message | ConvertFrom-Json).error.message)"
             } else {
                 Write-Warning "$($_.Exception.Message)"
- 
+
             }
         }
     }

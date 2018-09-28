@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Convert ISO8601 duration to a .NET timespan object
 
@@ -53,7 +53,7 @@ function Convert-ISO8601ToTimespan {
             if ($months -gt 0) {
                 $days = $months * 30 + $days
             }
-            #endregion 
+            #endregion
             New-TimeSpan -Days $days -Hours $hours -Minutes $minutes -Seconds $seconds
         }
     }

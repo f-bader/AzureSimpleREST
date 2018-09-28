@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Get all Log Analytics Workspaces
 
@@ -21,7 +21,7 @@ function Get-AzSRLogAnalyticsWorkspace {
         [Parameter(Mandatory = $true,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true)]
-        [ValidateScript( 
+        [ValidateScript(
             {
                 try {
                     [System.Guid]::Parse($_) | Out-Null
@@ -47,7 +47,7 @@ function Get-AzSRLogAnalyticsWorkspace {
         #endregion
     }
     Process {
-            
+
         $uri = "https://management.azure.com/subscriptions/$SubscriptionId/providers/Microsoft.OperationalInsights/workspaces?api-version=2015-03-20"
 
         $params = @{

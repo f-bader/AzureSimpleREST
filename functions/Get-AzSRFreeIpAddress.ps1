@@ -62,7 +62,7 @@ function Get-AzSRFreeIpAddress {
                 break
             }
             Write-Verbose "Subnet address prefix:`t`t`t$($Subnet.AddressPrefix)"
-            $PossibleIpAddresses = Get-SubnetAddresses -Subnet $Subnet.AddressPrefix | Select-Object -ExpandProperty IPAddressToString
+            $PossibleIpAddresses = Get-SubnetAddress -Subnet $Subnet.AddressPrefix | Select-Object -ExpandProperty IPAddressToString
             $UsedIpAddresses = $Subnet.ipConfigurations.privateIPAddress
             if ([string]::IsNullOrEmpty($UsedIpAddresses)) {
                 Write-Verbose "No IP addresses used"
