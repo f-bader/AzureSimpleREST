@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Remove a protected item from a Recovery Service Vault
 
@@ -112,7 +112,7 @@ function Remove-AzSRRecoveryServiceVaultProtectedItem {
                             Write-Warning "$(($_.ErrorDetails.Message | ConvertFrom-Json).error.message)"
                         } else {
                             Write-Warning "$($_.Exception.Message)"
-     
+
                         }
                     }
                 }

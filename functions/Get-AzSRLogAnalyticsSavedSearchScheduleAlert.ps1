@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Return the Alerts of a Log Analytics Saved Search Schedule from a Log Analytics Workspace
 
@@ -48,7 +48,7 @@ function Get-AzSRLogAnalyticsSavedSearchScheduleAlert {
     }
 
     Process {
-    
+
         $uri = "https://management.azure.com/$SearchScheduleId/actions?api-version=2015-03-20"
 
         $params = @{

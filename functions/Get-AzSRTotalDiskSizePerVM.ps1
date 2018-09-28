@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Returns a list of all VMs with the sum of managed disk space allocated to them
 
@@ -26,7 +26,7 @@ function Get-AzSRTotalDiskSizePerVM {
         [Parameter(Mandatory = $true,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true)]
-        [ValidateScript( 
+        [ValidateScript(
             {
                 try {
                     [System.Guid]::Parse($_) | Out-Null

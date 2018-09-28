@@ -1,6 +1,6 @@
-<#
+﻿<#
 .SYNOPSIS
-    How much does a specific VM Azure Backup cost 
+    How much does a specific VM Azure Backup cost
 
 .DESCRIPTION
     Azure Backup pricing is based on consumption and a base price.

@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Get extended information about a Recovery Service Vault protected item
 
@@ -58,7 +58,7 @@ function Get-AzSRRecoveryServiceVaultProtectedItemExtendedInformation {
     }
     Process {
         $uri = $baseURI + $ProtectedItemId + $suffixURI
-        
+
         $params = @{
             ContentType = 'application/x-www-form-urlencoded'
             Headers     = $LoginHeader
@@ -66,7 +66,7 @@ function Get-AzSRRecoveryServiceVaultProtectedItemExtendedInformation {
             URI         = $uri
             Verbose     = $false
         }
-        
+
         try {
             $Response = Invoke-RestMethod @params
 
@@ -124,7 +124,7 @@ function Get-AzSRRecoveryServiceVaultProtectedItemExtendedInformation {
                 Write-Warning "$(($_.ErrorDetails.Message | ConvertFrom-Json).error.message)"
             } else {
                 Write-Warning "$($_.Exception.Message)"
- 
+
             }
         }
     }

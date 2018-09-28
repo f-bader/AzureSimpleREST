@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Get storage usage of a Recovery Service Vault
 
@@ -60,7 +60,7 @@ function Get-AzSRRecoveryServiceVaultUsage {
         }
 
         $VaultUsageResponse = Invoke-RestMethod @params
-    
+
         $VaultUsageResponse.value | Where-Object { $_.unit -eq "Bytes" } | ForEach-Object {
             $VaultUsage = New-Object psobject
             $VaultUsage | Add-Member -MemberType NoteProperty -Name "BackupedSizeMB" -Value ([int64]($_.currentValue / 1024 / 1024))
