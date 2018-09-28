@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Get all Recovery Points for a given Protected Item
 
@@ -113,7 +113,7 @@ function Get-AzSRRecoveryServiceVaultProtectedItemRecoveryPoint {
                     'osType'                       = $_.properties.osType
                 }
             }
-        } catch { 
+        } catch {
             if ($_.ErrorDetails) {
                 Write-Warning "$(($_.ErrorDetails.Message | ConvertFrom-Json).error.message)"
             } else {

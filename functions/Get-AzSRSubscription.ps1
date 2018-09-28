@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Gets all subscriptions for a tenant.
 
@@ -42,7 +42,7 @@ function Get-AzSRSubscription {
             URI         = $uri
             Verbose     = $false
         }
-    
+
         $Response = Invoke-RestMethod @params
         $Response.value | ForEach-Object {
             Return New-Object psobject -Property @{
