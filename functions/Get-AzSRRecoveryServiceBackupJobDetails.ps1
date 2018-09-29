@@ -24,7 +24,7 @@ function Get-AzSRRecoveryServiceBackupJobDetails {
             ValueFromPipelineByPropertyName = $true)]
         [ValidateScript(
             {
-                if ($_ -match "subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resourcegroups\/[\w\d-]+\/providers\/Microsoft.RecoveryServices\/vaults\/[\w\d-]+\/backupJobs\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$" ) {
+                if ($_ -match "subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resourcegroups\/[\w\d-\.]+\/providers\/Microsoft.RecoveryServices\/vaults\/[\w\d-]+\/backupJobs\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$" ) {
                     $true
                 } else {
                     throw "Not a valid 'Microsoft.RecoveryServices' Vault URI"
