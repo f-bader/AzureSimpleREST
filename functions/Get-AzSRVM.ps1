@@ -26,7 +26,7 @@ function Get-AzSRVM {
             ValueFromPipelineByPropertyName = $true)]
         [ValidateScript(
             {
-                if ($_ -match "subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resourcegroups\/[\w\d-]+\/providers\/Microsoft\.Compute\/virtualMachines\/[\w\d-]+$" ) {
+                if ($_ -match "subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resourcegroups\/[\w\d-\.]+\/providers\/Microsoft\.Compute\/virtualMachines\/[\w\d-]+$" ) {
                     $true
                 } else {
                     throw "Not a valid 'Microsoft.Compute/virtualMachines' URI"
@@ -79,7 +79,6 @@ function Get-AzSRVM {
                 Write-Warning "$(($_.ErrorDetails.Message | ConvertFrom-Json).error.message)"
             } else {
                 Write-Warning "$($_.Exception.Message)"
-
             }
         }
     }

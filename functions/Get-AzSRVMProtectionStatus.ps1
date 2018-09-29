@@ -46,7 +46,7 @@ function Get-AzSRVMProtectionStatus {
             $VMInformation = Get-AzSRVM -ResourceId $ResourceId
         } catch {
             Write-Warning "$($_.Exception.Message)"
-            Exit
+            throw
         }
         $SubscriptionId = $VMInformation.ResourceId -replace '\/subscriptions\/(.*)/resourceGroups\/.*', '$1'
         $uri = "https://management.azure.com/subscriptions/$SubscriptionId/providers/Microsoft.RecoveryServices/locations/$($VMInformation.location)/backupStatus?api-version=2016-06-01"

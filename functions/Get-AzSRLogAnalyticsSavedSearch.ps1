@@ -24,7 +24,7 @@ function Get-AzSRLogAnalyticsSavedSearch {
             ValueFromPipelineByPropertyName = $true)]
         [ValidateScript(
             {
-                if ($_ -match "subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resourcegroups\/[\w\d-]+\/providers\/microsoft.operationalinsights\/workspaces\/[\w\d-]+\/savedSearches\/[\w|()-]+$" ) {
+                if ($_ -match "subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resourcegroups\/[\w\d-\.]+\/providers\/microsoft.operationalinsights\/workspaces\/[\w\d-]+\/savedSearches\/[\w|()-]+$" ) {
                     $true
                 } else {
                     throw "Not a valid 'microsoft.operationalinsights/savedSearches' workspace URI"

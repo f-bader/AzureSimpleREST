@@ -24,7 +24,7 @@ function Get-AzSRRecoveryServiceVaultUsage {
             ValueFromPipelineByPropertyName = $true)]
         [ValidateScript(
             {
-                if ($_ -match "subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resourcegroups\/[\w\d-]+\/providers\/microsoft\.RecoveryServices\/vaults\/[\w|()-]+$" ) {
+                if ($_ -match "subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resourcegroups\/[\w\d-\.]+\/providers\/microsoft\.RecoveryServices\/vaults\/[\w|()-]+$" ) {
                     $true
                 } else {
                     throw "Not  a valid 'microsoft.RecoveryServices/vaults' URI"

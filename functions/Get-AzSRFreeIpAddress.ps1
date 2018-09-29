@@ -48,6 +48,16 @@ function Get-AzSRFreeIpAddress {
         [Int32]$First
     )
 
+    Begin {
+        #region Check if logged in
+        try {
+            Get-AzureRmCachedAccessToken | Out-Null
+        } catch {
+            throw $($_.Exception.Message)
+        }
+        #endregion
+    }
+
     Process {
         $FoundIPAddress = 0
         if ($SubnetName) {
@@ -62,7 +72,7 @@ function Get-AzSRFreeIpAddress {
                 break
             }
             Write-Verbose "Subnet address prefix:`t`t`t$($Subnet.AddressPrefix)"
-            $PossibleIpAddresses = Get-SubnetAddress -Subnet $Subnet.AddressPrefix | Select-Object -ExpandProperty IPAddressToString
+            $PossibleIpAddresses = Get-SubnetAddress -Subnet "$($Subnet.AddressPrefix)" | Select-Object -ExpandProperty IPAddressToString
             $UsedIpAddresses = $Subnet.ipConfigurations.privateIPAddress
             if ([string]::IsNullOrEmpty($UsedIpAddresses)) {
                 Write-Verbose "No IP addresses used"

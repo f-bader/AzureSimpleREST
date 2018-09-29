@@ -31,7 +31,7 @@ Describe "General project validation: $moduleName" {
         }
 
         It "Module '$moduleName' can import cleanly" {
-            {Import-Module (Join-Path $ModulePath "$moduleName.psm1") -force } | Should Not Throw
+            { Import-Module (Join-Path $ModulePath "$moduleName.psm1") -force } | Should Not Throw
         }
     }
 
