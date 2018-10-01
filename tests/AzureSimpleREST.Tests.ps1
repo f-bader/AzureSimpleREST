@@ -61,7 +61,7 @@ Describe "General project validation: $moduleName" {
         }
 
         It 'Required Modules' {
-            $Script:Manifest.RequiredModules | Should Be @('AzureRM')
+            $Script:Manifest.RequiredModules | Should Be @( 'AzureRm.Profile', 'AzureRM.Network' )
         }
     }
 
