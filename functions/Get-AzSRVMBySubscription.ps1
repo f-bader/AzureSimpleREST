@@ -59,18 +59,7 @@ function Get-AzSRVMBySubscription {
             Verbose     = $false
         }
 
-        $Response = Invoke-RestMethod @params
-        $Response.value | ForEach-Object {
-            New-Object psobject -Property @{
-                "id"       = $_.id
-                "name"     = $_.name
-                "type"     = $_.type
-                "location" = $_.location
-                "tags"     = $_.tags
-            }
-        }
-        while ($Response.PSObject.Properties.Name -match "NextLink") {
-            $params.URI = $Response.NextLink
+        try {
             $Response = Invoke-RestMethod @params
             $Response.value | ForEach-Object {
                 New-Object psobject -Property @{
@@ -81,8 +70,24 @@ function Get-AzSRVMBySubscription {
                     "tags"     = $_.tags
                 }
             }
+            while ($Response.PSObject.Properties.Name -match "NextLink") {
+                $params.URI = $Response.NextLink
+                $Response = Invoke-RestMethod @params
+                $Response.value | ForEach-Object {
+                    New-Object psobject -Property @{
+                        "id"       = $_.id
+                        "name"     = $_.name
+                        "type"     = $_.type
+                        "location" = $_.location
+                        "tags"     = $_.tags
+                    }
+                }
+            }
+        } catch {
+            throw $($_.Exception.Message)
         }
     }
+
     End {
 
     }
