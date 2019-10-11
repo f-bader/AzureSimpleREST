@@ -6,10 +6,10 @@
     Return the Schedule of a Log Analytics Saved Search from a Log Analytics Workspace
 
 .PARAMETER SearchId
-    The Azure Resource Id of the Log Analytics Search. Use Get-AzureRmOperationalInsightsWorkspace and Get-AzSRLogAnalyticsSavedSearchList to retrieve this information
+    The Azure Resource Id of the Log Analytics Search. Use Get-AzOperationalInsightsWorkspace and Get-AzSRLogAnalyticsSavedSearchList to retrieve this information
 
 .EXAMPLE
-    Get-AzureRmOperationalInsightsWorkspace | Get-AzSRLogAnalyticsSavedSearchList | Get-AzSRLogAnalyticsSavedSearchSchedule
+    Get-AzOperationalInsightsWorkspace | Get-AzSRLogAnalyticsSavedSearchList | Get-AzSRLogAnalyticsSavedSearchSchedule
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader

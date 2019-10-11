@@ -6,7 +6,7 @@
     Returns a specified number or all free IP addresses from a specified Azure Virtual Network
     This allows easy IP address management if a static IP address should be used
 
-    This function is differnt to Test-AzureRmPrivateIPAddressAvailability since it returns all free IP addresses or a specified number.
+    This function is different to Test-AzPrivateIPAddressAvailability since it returns all free IP addresses or a specified number.
     There is also no need to provide a IP address
 
 .PARAMETER NetworkName
@@ -22,7 +22,7 @@
     Gets only the specified number of objects. Enter the number of objects to get.
 
 .EXAMPLE
-    Find all free IP addresses in a specifiec Virtual Network
+    Find all free IP addresses in a specific Virtual Network
     Get-AzSRFreeIpAddress -NetworkName "MyVirtualNetwork" -ResourceGroupName "Subnet01"
 
 .EXAMPLE

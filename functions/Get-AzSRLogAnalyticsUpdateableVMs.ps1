@@ -7,10 +7,10 @@
     Only returns virtual machines that have reported back within the last 12 ours and have the Updates solution is enabled
 
 .PARAMETER LogAnalyticsResourceId
-    The Azure Resource Id of the Log Analytics Workspace. Use Get-AzureRmOperationalInsightsWorkspace to retrieve this information
+    The Azure Resource Id of the Log Analytics Workspace. Use Get-AzOperationalInsightsWorkspace to retrieve this information
 
 .EXAMPLE
-    Get-AzureRmOperationalInsightsWorkspace | Get-AzSRLogAnalyticsUpdatableVMs
+    Get-AzOperationalInsightsWorkspace | Get-AzSRLogAnalyticsUpdatableVMs
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader

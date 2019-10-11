@@ -39,7 +39,7 @@ Describe "$FunctionName Integration Tests" -Tags "IntegrationTests" {
         }
     }
     Context "Login failed" {
-        Mock -ModuleName AzureSimpleREST -CommandName Get-AzCachedAccessToken -MockWith { throw "Ensure you have logged in (Connect-AzureRmAccount) before calling this function." }
+        Mock -ModuleName AzureSimpleREST -CommandName Get-AzCachedAccessToken -MockWith { throw "Ensure you have logged in (Connect-AzAccount) before calling this function." }
         Mock -ModuleName AzureSimpleREST -CommandName Invoke-RestMethod -MockWith {  }
 
         It "Should throw if not logged in" {

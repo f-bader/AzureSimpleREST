@@ -1,7 +1,7 @@
 ﻿function Get-AzCachedAccessToken() {
     <#
     .SYNOPSIS
-        Returns the current Access token from the AzureRM Module. You need to login first with Connect-AzureRmAccount
+        Returns the current Access token from the AzureRM Module. You need to login first with Connect-AzAccount
 
     .DESCRIPTION
         Allows easy retrival of you Azure API Access Token / Bearer Token
@@ -25,13 +25,13 @@
     if ($azureRmProfileModuleVersion.Major -ge 3) {
         $azureRmProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
         if (-not $azureRmProfile.Accounts.Count) {
-            Write-Error "Ensure you have logged in (Connect-AzureRmAccount) before calling this function."
+            Write-Error "Ensure you have logged in (Connect-AzAccount) before calling this function."
         }
     } else {
         # AzureRm.Profile < v3.0
         $azureRmProfile = [Microsoft.WindowsAzure.Commands.Common.AzureRmProfileProvider]::Instance.Profile
         if (-not $azureRmProfile.Context.Account.Count) {
-            Write-Error "Ensure you have logged in (Connect-AzureRmAccount) before calling this function."
+            Write-Error "Ensure you have logged in (Connect-AzAccount) before calling this function."
         }
     }
 

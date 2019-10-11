@@ -14,7 +14,7 @@
     Get-AzSRVMByName -SubscriptionId nnnnnnnn -VMName "vmname" | Get-AzSRVMProtectionStatus
 
 .EXAMPLE
-    Get-AzureRmVM | Get-AzSRVMProtectionStatus
+    Get-AzVM | Get-AzSRVMProtectionStatus
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader
