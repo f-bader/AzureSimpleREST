@@ -7,7 +7,7 @@
 
 ## Why another Azure Module?
 
-Because there are some REST API calls not provided through the AzureRM Cmdlets. Also because sometimes those Cmdlets are just to heavy weight and slow on their feet.
+Because there are some REST API calls not provided through the Az Cmdlets. Also because sometimes those Cmdlets are just to heavy weight and slow on their feet.
 
 My Cmdlets are just light versions and only expose the information I needed when I created them. That might be not enough for everybody, but please feel free to contribute.
 
