@@ -22,7 +22,7 @@
     Copyright         = '2018 Fabian Bader'
 
     # Description of the functionality provided by this module
-    Description       = 'Simple and lightweight access to Azure REST API calls mostly not available through the AzureRM module or originals not suitable for my needs. Uses the authentication of AzureRM module.'
+    Description       = 'Simple and lightweight access to Azure REST API calls mostly not available through the Az module or originals not suitable for my needs. Uses the authentication of Az module.'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion = '3.0'
@@ -44,8 +44,8 @@
 
     # Modules that must be imported into the global environment prior to importing this module
     RequiredModules   = @(
-        'AzureRm.Profile',
-        'AzureRM.Network'
+        'Az.Accounts',
+        'Az.Network'
         )
 
     # Assemblies that must be loaded prior to importing this module

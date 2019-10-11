@@ -1,10 +1,10 @@
 ﻿function Get-AzCachedAccessToken() {
     <#
     .SYNOPSIS
-        Returns the current Access token from the AzureRM Module. You need to login first with Connect-AzAccount
+        Returns the current Access token from the Az Module. You need to login first with Connect-AzAccount
 
     .DESCRIPTION
-        Allows easy retrival of you Azure API Access Token / Bearer Token
+        Allows easy retrieval of you Azure API Access Token / Bearer Token
         This makes it much easier to use Invoke-RestMethod because you do not need a service principal
 
     .EXAMPLE
@@ -17,18 +17,18 @@
     #>
     $ErrorActionPreference = 'Stop'
 
-    if (-not (Get-Module Az.Profile)) {
-        Import-Module Az.Profile
+    if (-not (Get-Module Az.Accounts)) {
+        Import-Module Az.Accounts
     }
 
-    $azureRmProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
-    if (-not $azureRmProfile.Accounts.Count) {
+    $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    if (-not $azProfile.Accounts.Count) {
         Write-Error "Ensure you have logged in (Connect-AzAccount) before calling this function."
     }
 
     $currentAzureContext = Get-AzContext
 
-    $profileClient = New-Object Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient($azureRmProfile)
+    $profileClient = New-Object Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient($azProfile)
     Write-Debug ("Getting access token for tenant" + $currentAzureContext.Subscription.TenantId)
     $token = $profileClient.AcquireAccessToken($currentAzureContext.Subscription.TenantId)
     $token.AccessToken
