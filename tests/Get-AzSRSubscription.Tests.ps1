@@ -2,7 +2,7 @@ $FunctionName = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -Replace ".Tests
 
 Describe "$FunctionName Integration Tests" -Tags "IntegrationTests" {
     Context "Login successfull and return value valid" {
-        Mock -ModuleName AzureSimpleREST -CommandName Get-AzureRmCachedAccessToken -MockWith { return "MockedAuthorization" }
+        Mock -ModuleName AzureSimpleREST -CommandName Get-AzCachedAccessToken -MockWith { return "MockedAuthorization" }
         Mock -ModuleName AzureSimpleREST -CommandName Invoke-RestMethod -MockWith {
             $ResponseJSON = '{"value":[{"id":"/subscriptions/429864a9-cfa2-40b4-b1c7-b65ce0485347","subscriptionId":"429864a9-cfa2-40b4-b1c7-b65ce0485347","displayName":"Pay as you go","state":"Enabled","subscriptionPolicies":{"locationPlacementId":"Public_2014-09-01","quotaId":"PayAsYouGo_2014-09-01","spendingLimit":"Off"},"authorizationSource":"Legacy"}]}'
             $ResponseJSON | ConvertFrom-Json
@@ -39,7 +39,7 @@ Describe "$FunctionName Integration Tests" -Tags "IntegrationTests" {
         }
     }
     Context "Login failed" {
-        Mock -ModuleName AzureSimpleREST -CommandName Get-AzureRmCachedAccessToken -MockWith { throw "Ensure you have logged in (Connect-AzureRmAccount) before calling this function." }
+        Mock -ModuleName AzureSimpleREST -CommandName Get-AzCachedAccessToken -MockWith { throw "Ensure you have logged in (Connect-AzureRmAccount) before calling this function." }
         Mock -ModuleName AzureSimpleREST -CommandName Invoke-RestMethod -MockWith {  }
 
         It "Should throw if not logged in" {

@@ -1,4 +1,4 @@
-﻿function Get-AzureRmCachedAccessToken() {
+﻿function Get-AzCachedAccessToken() {
     <#
     .SYNOPSIS
         Returns the current Access token from the AzureRM Module. You need to login first with Connect-AzureRmAccount
@@ -8,7 +8,7 @@
         This makes it much easier to use Invoke-RestMethod because you do not need a service principal
 
     .EXAMPLE
-        Get-AzureRmCachedAccessToken
+        Get-AzCachedAccessToken
 
     .NOTES
         Website: https://gallery.technet.microsoft.com/scriptcenter/Easily-obtain-AccessToken-3ba6e593/view/Discussions#content
@@ -35,7 +35,7 @@
         }
     }
 
-    $currentAzureContext = Get-AzureRmContext
+    $currentAzureContext = Get-AzContext
     $profileClient = New-Object Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient($azureRmProfile)
     Write-Debug ("Getting access token for tenant" + $currentAzureContext.Subscription.TenantId)
     $token = $profileClient.AcquireAccessToken($currentAzureContext.Subscription.TenantId)

@@ -27,7 +27,7 @@
 
 .EXAMPLE
     Find one free IP address in one of the available virtual networks
-    Get-AzureRmVirtualNetwork | Get-AzSRFreeIpAddress -First 1
+    Get-AzVirtualNetwork | Get-AzSRFreeIpAddress -First 1
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader
@@ -51,7 +51,7 @@ function Get-AzSRFreeIpAddress {
     Begin {
         #region Check if logged in
         try {
-            Get-AzureRmCachedAccessToken | Out-Null
+            Get-AzCachedAccessToken | Out-Null
         } catch {
             throw $($_.Exception.Message)
         }
@@ -61,9 +61,9 @@ function Get-AzSRFreeIpAddress {
     Process {
         $FoundIPAddress = 0
         if ($SubnetName) {
-            $SubnetConfiguration = Get-AzureRmVirtualNetwork -ExpandResource "subnets/ipConfigurations" -Name $NetworkName -ResourceGroupName $ResourceGroupName | Select-Object -ExpandProperty Subnets | Where-Object { $_.Name -eq $SubnetName}
+                $SubnetConfiguration = Get-AzVirtualNetwork -ExpandResource "subnets/ipConfigurations" -Name $NetworkName -ResourceGroupName $ResourceGroupName | Select-Object -ExpandProperty Subnets | Where-Object { $_.Name -eq $SubnetName}
         } else {
-            $SubnetConfiguration = Get-AzureRmVirtualNetwork -ExpandResource "subnets/ipConfigurations" -Name $NetworkName -ResourceGroupName $ResourceGroupName | Select-Object -ExpandProperty Subnets
+                $SubnetConfiguration = Get-AzVirtualNetwork -ExpandResource "subnets/ipConfigurations" -Name $NetworkName -ResourceGroupName $ResourceGroupName | Select-Object -ExpandProperty Subnets
         }
         foreach ($Subnet in $SubnetConfiguration) {
             Write-Verbose "Check for free IP address in subnet:`t$($Subnet.Name)"
