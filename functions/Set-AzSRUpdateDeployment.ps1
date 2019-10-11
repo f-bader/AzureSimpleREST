@@ -45,7 +45,7 @@ function Set-AzSRUpdateDeployment {
         [Parameter(Mandatory = $true)]
         $UpdateScheduleName,
         [Parameter(Mandatory = $true)]
-        [ValidateScript( { $_ -ge (Get-Date) } )]
+        [ValidateScript( { (New-TimeSpan -Start (Get-Date) -End $_).Ticks -gt 0 } )]
         $StartTime,
         [Parameter(Mandatory = $true)]
         [string[]]$AzureVMId,
@@ -57,7 +57,7 @@ function Set-AzSRUpdateDeployment {
         [ValidateScript(
             {
                 try {
-                    $AccessToken = Get-AzureRmCachedAccessToken
+                    $AccessToken = Get-AzCachedAccessToken
                     $LoginHeader = @{
                         'authorization' = "Bearer $AccessToken"
                     }
@@ -79,7 +79,7 @@ function Set-AzSRUpdateDeployment {
     Begin {
         #region Get AccessToken
         try {
-            $AccessToken = Get-AzureRmCachedAccessToken
+            $AccessToken = Get-AzCachedAccessToken
             $LoginHeader = @{
                 'authorization' = "Bearer $AccessToken"
             }

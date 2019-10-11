@@ -6,7 +6,7 @@
     Returns a specified number or all free IP addresses from a specified Azure Virtual Network
     This allows easy IP address management if a static IP address should be used
 
-    This function is differnt to Test-AzureRmPrivateIPAddressAvailability since it returns all free IP addresses or a specified number.
+    This function is different to Test-AzPrivateIPAddressAvailability since it returns all free IP addresses or a specified number.
     There is also no need to provide a IP address
 
 .PARAMETER NetworkName
@@ -22,12 +22,12 @@
     Gets only the specified number of objects. Enter the number of objects to get.
 
 .EXAMPLE
-    Find all free IP addresses in a specifiec Virtual Network
+    Find all free IP addresses in a specific Virtual Network
     Get-AzSRFreeIpAddress -NetworkName "MyVirtualNetwork" -ResourceGroupName "Subnet01"
 
 .EXAMPLE
     Find one free IP address in one of the available virtual networks
-    Get-AzureRmVirtualNetwork | Get-AzSRFreeIpAddress -First 1
+    Get-AzVirtualNetwork | Get-AzSRFreeIpAddress -First 1
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader
@@ -51,7 +51,7 @@ function Get-AzSRFreeIpAddress {
     Begin {
         #region Check if logged in
         try {
-            Get-AzureRmCachedAccessToken | Out-Null
+            Get-AzCachedAccessToken | Out-Null
         } catch {
             throw $($_.Exception.Message)
         }
@@ -61,9 +61,9 @@ function Get-AzSRFreeIpAddress {
     Process {
         $FoundIPAddress = 0
         if ($SubnetName) {
-            $SubnetConfiguration = Get-AzureRmVirtualNetwork -ExpandResource "subnets/ipConfigurations" -Name $NetworkName -ResourceGroupName $ResourceGroupName | Select-Object -ExpandProperty Subnets | Where-Object { $_.Name -eq $SubnetName}
+                $SubnetConfiguration = Get-AzVirtualNetwork -ExpandResource "subnets/ipConfigurations" -Name $NetworkName -ResourceGroupName $ResourceGroupName | Select-Object -ExpandProperty Subnets | Where-Object { $_.Name -eq $SubnetName}
         } else {
-            $SubnetConfiguration = Get-AzureRmVirtualNetwork -ExpandResource "subnets/ipConfigurations" -Name $NetworkName -ResourceGroupName $ResourceGroupName | Select-Object -ExpandProperty Subnets
+                $SubnetConfiguration = Get-AzVirtualNetwork -ExpandResource "subnets/ipConfigurations" -Name $NetworkName -ResourceGroupName $ResourceGroupName | Select-Object -ExpandProperty Subnets
         }
         foreach ($Subnet in $SubnetConfiguration) {
             Write-Verbose "Check for free IP address in subnet:`t$($Subnet.Name)"

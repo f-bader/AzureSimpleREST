@@ -6,10 +6,10 @@
     Return the ResourceId of the Automation Account linked to a specific Log Analytics Workspace
 
 .PARAMETER LogAnalyticsResourceId
-    The Azure Resource Id of the Log Analytics Workspace. Use Get-AzureRmOperationalInsightsWorkspace to retrieve this information
+    The Azure Resource Id of the Log Analytics Workspace. Use Get-AzOperationalInsightsWorkspace to retrieve this information
 
 .EXAMPLE
-    Get-AzureRmOperationalInsightsWorkspace | Get-AzSRLogAnalyticsLinkedAutomationAccount
+    Get-AzOperationalInsightsWorkspace | Get-AzSRLogAnalyticsLinkedAutomationAccount
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader
@@ -37,7 +37,7 @@ function Get-AzSRLogAnalyticsLinkedAutomationAccount {
     Begin {
         #region Get AccessToken
         try {
-            $AccessToken = Get-AzureRmCachedAccessToken
+            $AccessToken = Get-AzCachedAccessToken
             $LoginHeader = @{
                 'authorization' = "Bearer $AccessToken"
             }

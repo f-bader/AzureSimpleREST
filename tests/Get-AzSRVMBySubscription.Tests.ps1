@@ -2,7 +2,7 @@ $FunctionName = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -Replace ".Tests
 
 Describe "$FunctionName Integration Tests" -Tags "IntegrationTests" {
     Context "Login successfull and return value valid" {
-        Mock -ModuleName AzureSimpleREST -CommandName Get-AzureRmCachedAccessToken -MockWith { return "MockedAuthorization" }
+        Mock -ModuleName AzureSimpleREST -CommandName Get-AzCachedAccessToken -MockWith { return "MockedAuthorization" }
         Mock -ModuleName AzureSimpleREST -CommandName Invoke-RestMethod -MockWith {
             $ResponseJSON = '{"value": [{"id":"/subscriptions/429864a9-cfa2-40b4-b1c7-b65ce0485347/resourceGroups/MyFakeRG/providers/Microsoft.Compute/virtualMachines/MyFakeVM","name":"MyFakeVM","type":"Microsoft.Compute/virtualMachines","location":"westeurope","tags":{}},{"id":"/subscriptions/429864a9-cfa2-40b4-b1c7-b65ce0485347/resourceGroups/MyFakeRG/providers/Microsoft.Compute/virtualMachines/MyFakeVM","name":"MyFakeVM2","type":"Microsoft.Compute/virtualMachines","location":"westeurope","tags":{}}]}'
             $ResponseJSON | ConvertFrom-Json
@@ -23,7 +23,7 @@ Describe "$FunctionName Integration Tests" -Tags "IntegrationTests" {
         }
     }
     Context "No VMs present" {
-        Mock -ModuleName AzureSimpleREST -CommandName Get-AzureRmCachedAccessToken -MockWith { return "MockedAuthorization" }
+        Mock -ModuleName AzureSimpleREST -CommandName Get-AzCachedAccessToken -MockWith { return "MockedAuthorization" }
         Mock -ModuleName AzureSimpleREST -CommandName Invoke-RestMethod -MockWith {
             $ResponseJSON = '{"value": []}'
             $ResponseJSON | ConvertFrom-Json
@@ -36,7 +36,7 @@ Describe "$FunctionName Integration Tests" -Tags "IntegrationTests" {
         }
     }
     Context "Invoke-RestMethod throws" {
-        Mock -ModuleName AzureSimpleREST -CommandName Get-AzureRmCachedAccessToken -MockWith { return "MockedAuthorization" }
+        Mock -ModuleName AzureSimpleREST -CommandName Get-AzCachedAccessToken -MockWith { return "MockedAuthorization" }
         Mock -ModuleName AzureSimpleREST -CommandName Invoke-RestMethod -MockWith { throw "Wrong subscription context" }
 
         It "Should throw if request was invalid" {
@@ -44,7 +44,7 @@ Describe "$FunctionName Integration Tests" -Tags "IntegrationTests" {
         }
     }
     Context "Login failed" {
-        Mock -ModuleName AzureSimpleREST -CommandName Get-AzureRmCachedAccessToken -MockWith { throw "Ensure you have logged in (Connect-AzureRmAccount) before calling this function." }
+        Mock -ModuleName AzureSimpleREST -CommandName Get-AzCachedAccessToken -MockWith { throw "Ensure you have logged in (Connect-AzAccount) before calling this function." }
 
         It "Should throw if not logged in" {
             { Get-AzSRVMBySubscription -SubscriptionId "429864a9-cfa2-40b4-b1c7-b65ce0485347" -VMName "MyFakeVM" } | Should -Throw

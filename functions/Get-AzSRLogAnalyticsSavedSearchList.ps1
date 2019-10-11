@@ -6,10 +6,10 @@
     Return all Log Analytics Saved Searches from a Log Analytics Workspace
 
 .PARAMETER LogAnalyticsResourceId
-    The Azure Resource Id of the Log Analytics Workspace. Use Get-AzureRmOperationalInsightsWorkspace to retrieve this information
+    The Azure Resource Id of the Log Analytics Workspace. Use Get-AzOperationalInsightsWorkspace to retrieve this information
 
 .EXAMPLE
-    Get-AzureRmOperationalInsightsWorkspace | Get-AzSRLogAnalyticsSavedSearchList
+    Get-AzOperationalInsightsWorkspace | Get-AzSRLogAnalyticsSavedSearchList
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader
@@ -37,7 +37,7 @@ function Get-AzSRLogAnalyticsSavedSearchList {
     Begin {
         #region Get AccessToken
         try {
-            $AccessToken = Get-AzureRmCachedAccessToken
+            $AccessToken = Get-AzCachedAccessToken
             $LoginHeader = @{
                 'authorization' = "Bearer $AccessToken"
             }

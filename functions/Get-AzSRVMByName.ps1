@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     Return a list of VMs from the specified subscription that match a name
-    Much like `Get-AzureRmResource -ResourceType "Microsoft.Compute/virtualMachines" `
+    Much like `Get-AzResource -ResourceType "Microsoft.Compute/virtualMachines" `
 
 .PARAMETER SubscriptionId
     The SubscriptionId of the target subscription
@@ -44,7 +44,7 @@ function Get-AzSRVMByName {
     Begin {
         #region Get AccessToken
         try {
-            $AccessToken = Get-AzureRmCachedAccessToken
+            $AccessToken = Get-AzCachedAccessToken
             $LoginHeader = @{
                 'authorization' = "Bearer $AccessToken"
             }

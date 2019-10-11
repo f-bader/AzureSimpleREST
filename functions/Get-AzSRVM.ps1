@@ -41,7 +41,7 @@ function Get-AzSRVM {
 
         #region Get AccessToken
         try {
-            $AccessToken = Get-AzureRmCachedAccessToken
+            $AccessToken = Get-AzCachedAccessToken
             $LoginHeader = @{
                 'authorization' = "Bearer $AccessToken"
             }

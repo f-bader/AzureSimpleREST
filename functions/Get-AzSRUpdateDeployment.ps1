@@ -14,7 +14,7 @@
     The Name of the Update Deployment. If none is specified all are returned
 
 .EXAMPLE
-    Get-AzureRmOperationalInsightsWorkspace | Get-AzSRLogAnalyticsLinkedAutomationAccount | Get-AzSRUpdateDeployment
+    Get-AzOperationalInsightsWorkspace | Get-AzSRLogAnalyticsLinkedAutomationAccount | Get-AzSRUpdateDeployment
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader
@@ -43,7 +43,7 @@ function Get-AzSRUpdateDeployment {
     Begin {
         #region Get AccessToken
         try {
-            $AccessToken = Get-AzureRmCachedAccessToken
+            $AccessToken = Get-AzCachedAccessToken
             $LoginHeader = @{
                 'authorization' = "Bearer $AccessToken"
             }

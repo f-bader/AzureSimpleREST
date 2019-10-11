@@ -14,7 +14,7 @@
     Get-AzSRVMByName -SubscriptionId nnnnnnnn -VMName "vmname" | Get-AzSRVMProtectionStatus
 
 .EXAMPLE
-    Get-AzureRmVM | Get-AzSRVMProtectionStatus
+    Get-AzVM | Get-AzSRVMProtectionStatus
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader
@@ -32,7 +32,7 @@ function Get-AzSRVMProtectionStatus {
     Begin {
         #region Get AccessToken
         try {
-            $AccessToken = Get-AzureRmCachedAccessToken
+            $AccessToken = Get-AzCachedAccessToken
             $LoginHeader = @{
                 'authorization' = "Bearer $AccessToken"
             }
