@@ -1,4 +1,4 @@
 {
-"powershell.codeFormatting.newLineAfterCloseBrace": false,
-"files.trimTrailingWhitespace": true
+    "powershell.codeFormatting.newLineAfterCloseBrace": false,
+    "files.trimTrailingWhitespace": true
 }
