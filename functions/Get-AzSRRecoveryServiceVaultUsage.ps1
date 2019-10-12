@@ -48,7 +48,7 @@ function Get-AzSRRecoveryServiceVaultUsage {
     }
     Process {
         $baseURI = "https://management.azure.com"
-        $suffixURI = "/usages?api-version=2016-06-01"
+        $suffixURI = "/usages?api-version=2019-05-13"
         $uri = $baseURI + $VaultId + $suffixURI
 
         $params = @{

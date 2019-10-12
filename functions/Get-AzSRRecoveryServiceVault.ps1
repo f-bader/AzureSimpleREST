@@ -47,7 +47,7 @@ function Get-AzSRRecoveryServiceVault {
     }
     Process {
         $baseURI = "https://management.azure.com"
-        $suffixURI = "/providers/Microsoft.RecoveryServices/vaults?api-version=2016-06-01"
+        $suffixURI = "/providers/Microsoft.RecoveryServices/vaults?api-version=2019-05-13"
         $uri = $baseURI + "/subscriptions/$SubscriptionID" + $suffixURI
 
         $params = @{

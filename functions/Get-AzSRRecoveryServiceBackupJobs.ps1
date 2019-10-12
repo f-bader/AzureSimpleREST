@@ -60,7 +60,7 @@ function Get-AzSRRecoveryServiceBackupJobs {
         $FilterToDate = (Get-Date).ToUniversalTime().ToString("yyyy-MM-dd hh:mm:ss tt", $FormatDateUS)
         $filter = "startTime eq '$FilterFromDate' and endTime eq '$FilterToDate'"
         $filter = [uri]::EscapeDataString($filter)
-        $suffixURI = "/backupJobs?api-version=2017-07-01&`$filter=$filter"
+        $suffixURI = "/backupJobs?api-version=2019-05-13&`$filter=$filter"
         $uri = $baseURI + $VaultId + $suffixURI
 
         $params = @{

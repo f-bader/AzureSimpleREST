@@ -74,7 +74,7 @@ function Get-AzSRRecoveryServiceVaultProtectedItemRecoveryPoint {
 
         #region uri definition
         $baseURI = "https://management.azure.com"
-        $suffixURI = "/recoveryPoints?api-version=2017-07-01&`$filter=restorePointQueryType eq 'rpTypeAll'"
+        $suffixURI = "/recoveryPoints?api-version=2019-05-13&`$filter=restorePointQueryType eq 'rpTypeAll'"
         #endregion
     }
 
