@@ -8,7 +8,7 @@
 
     Pricing based on https://azure.microsoft.com/en-us/pricing/details/backup/
     Instance size               Price
-    Instance < or = 50 GB            = 4.217 €
+    Instance < or = 50 GB            = 4.2165 €
     Instance is > 50 but < or = 500  = 8.433 €
     Instance > 500 GB     	         = 8.433 € for each 500 GB increment
 .PARAMETER AllocatedDiskSpace
@@ -33,7 +33,7 @@ function Get-AzSRBackupInstancePrice {
     Process {
 
         if ( $AllocatedDiskSpace -le 50 ) {
-            $Price = 4.217
+            $Price = 4.2165
         } elseif ( $AllocatedDiskSpace -gt 50 -and $AllocatedDiskSpace -lt 500 ) {
             $Price = 8.433
         } else {
