@@ -9,13 +9,13 @@
     Azure Resource Id of the Recovery Service Vault
 
 .EXAMPLE
-    Get-AzSRSubscription | Get-AzSRRecoveryServiceVault | Get-AzSRRecoveryServiceVaultProtectedItems
+    Get-AzSRSubscription | Get-AzSRRecoveryServiceVault | Get-AzSRRecoveryServiceVaultProtectedItem
 
 .NOTES
     Copyright: (c) 2018 Fabian Bader
     License: MIT https://opensource.org/licenses/MIT
 #>
-function Get-AzSRRecoveryServiceVaultProtectedItems {
+function Get-AzSRRecoveryServiceVaultProtectedItem {
     [CmdletBinding()]
     param (
         [Alias('Id')]
@@ -49,7 +49,7 @@ function Get-AzSRRecoveryServiceVaultProtectedItems {
     }
     Process {
         $baseURI = "https://management.azure.com"
-        $suffixURI = "/backupProtectedItems?api-version=2017-07-01"
+        $suffixURI = "/backupProtectedItems?api-version=2019-05-13"
         $uri = $baseURI + $VaultId + $suffixURI
 
         $params = @{
@@ -79,3 +79,4 @@ function Get-AzSRRecoveryServiceVaultProtectedItems {
         }
     }
 }
+New-Alias -name Get-AzSRRecoveryServiceVaultProtectedItems -value Get-AzSRRecoveryServiceVaultProtectedItem

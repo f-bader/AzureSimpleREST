@@ -53,7 +53,7 @@ function Get-AzSRRecoveryServiceVaultProtectedItemExtendedInformation {
 
         #region uri definition
         $baseURI = "https://management.azure.com"
-        $suffixURI = "?`$filter=expand+eq+'ExtendedInfo'&api-version=2017-07-01"
+        $suffixURI = "?`$filter=expand+eq+'ExtendedInfo'&api-version=2019-05-13"
         #endregion
     }
     Process {
