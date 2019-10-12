@@ -49,7 +49,7 @@ function Get-AzSRRecoveryServiceBackupJobDetails {
     Process {
 
         $baseURI = "https://management.azure.com"
-        $suffixURI = '?api-version=2017-07-01'
+        $suffixURI = '?api-version=2019-05-13'
         $uri = $baseURI + $BackupJobId + $suffixURI
 
         $BackupJobsList.value  | ForEach-Object {

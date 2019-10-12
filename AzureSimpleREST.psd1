@@ -77,9 +77,9 @@
         'Get-AzSRRecoveryServiceBackupJobDetails',
         'Get-AzSRRecoveryServiceBackupJobs',
         'Get-AzSRRecoveryServiceVault',
+        'Get-AzSRRecoveryServiceVaultProtectedItem',
         'Get-AzSRRecoveryServiceVaultProtectedItemExtendedInformation',
         'Get-AzSRRecoveryServiceVaultProtectedItemRecoveryPoint',
-        'Get-AzSRRecoveryServiceVaultProtectedItems',
         'Get-AzSRRecoveryServiceVaultUsage',
         'Get-AzSRSubscription',
         'Get-AzSRTotalDiskSizePerVM',
@@ -101,7 +101,8 @@
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
     AliasesToExport   = @(
         'Get-AzSRUpdateSchedule',
-        'Set-AzSRUpdateSchedule'
+        'Set-AzSRUpdateSchedule',
+        'Get-AzSRRecoveryServiceVaultProtectedItems'
     )
 
     # DSC resources to export from this module
